@@ -9,16 +9,13 @@ install:
 script:
 - pytest --doctest-modules --cov=auto_all auto_all.py
 deploy:
-  matrix:
-  - provider: pypi
-    skip_cleanup: true
-    user: jongracecox
-    password:
-      secure: TwKVv2wGesF3zHMtSzC/whgtBfHOG03wYS8bUOeeH4x8g5wQIu9SVyrYSffYE3FxapHbMCzmx7A3IgP4Ma6v4Ik6HqJY7a5DY/na0bcuI40IyCM2J0S0Hbq4E7WXaCCe6t7C5KE7NO3QzIcZboSZBWb78mcKLB2XbuIWMPCXqayGhqh8hynQmhwQ4C5b+jpBXlLtm6+AFH7eJOSdl8iO39RU5TL6FrOjgmks/KvTO0yHaXxmBoRcVudZsv9sAGsUx/UtRA65FPViIgu/dEV8cNtz7HOtL4v9x1mkvsiHF7OJiB1KCzSdUSCI83JSjdh44jjlNx0x2SnPbbwmCR7hi53xszMLbAHqY27hK1O4ntR1Iaui8HhBx8inxwS5z271xEQ9HZ8W9veRaxXxGkzj3LKGzjYflK1UN/ZK2syy5+cF4AEUpqEuQYi2waGhMxxWRo5KA05RLXetvsJYFEHUlATq9aXjMv29yH77KzySgpZe/Emd+Hb7r/7TKDeWXRaWDtUa+lc7G5oHLn6Kmm0iM1lerFKalEO9eoZwO2m1+O47CJ5yTKw1mNsC5Dj6EhG1QeonJWPS5z32vjNvnzRm2psbInt00SE2ClPxY5ASQOdcCMkq4ELGUHVssOGlniVYILs+tiwzrDTaXcckf8lvVvx6CiXfmFY+JYK9q3HYEuE=
-    distributions: sdist bdist_wheel
-    on:
-      tags: true
-      all_branches: true
-      python: '3.7'
+  provider: pypi
+  skip_cleanup: true
+  user: jongracecox
   password:
-    secure: NbBWj2KhimbnCAbwdeGwtLY2WXdmHjFhaNwSPfvskII5uw7/gDpDGhpBPMzeAmCOedQtodI6dC8TQwfPRBRVSZsEpwtipefsE+XhQFbpsH9oe4WgxtFlB+5SBzSjcZEYzEvkpylOSOwK8wDjVZhx/ZFDZKH/r1h9MoU5+klWKCZzilAROyyz/EVVshpzldP/OYgHExgsuzMNW4FfZN3Pqrx6NW37kV/qTvvRn2CKi0xSnVLlmWHTDFVxneQUGZzzdP4nP4cMx31veOIlwB4Xz1X64ZufOa6wBjGHyjzSOnR0uPrEeM0wJD8UsQliJ7nfxtpZ3E+uoUyCghcpNsIPIHLyVa/KsmVC12WBlmyHrQyFFgwYKEwPd0xBADfghQmVat5j/WykEFtPaKhwseMqp8zxQCNpv69weQW4UjAZfWSQE2ddF0oH10x0/QkychVtJjQXibe+uNpitoUrlQf+Flh5zZSs9Hx77BDmvrTtHqUeU33/3mrydD4GMIX41/Z3K1iiPHf6beC+tU24R/IxXhGnaKhNkGOXFsXLOLP9GMp5pXv8zecT3bm/mWFDrzWlZT3sk4i6IPjgTZTUHhvwBm6Z7dLCCwj/cYxkjW9u1CBk2ZP01qCBAejv0q6W0hsj1srFsSGJV4JPn8uTm0dQfqBZJUJvT69xWlFCRM6jukI=
+    secure: TwKVv2wGesF3zHMtSzC/whgtBfHOG03wYS8bUOeeH4x8g5wQIu9SVyrYSffYE3FxapHbMCzmx7A3IgP4Ma6v4Ik6HqJY7a5DY/na0bcuI40IyCM2J0S0Hbq4E7WXaCCe6t7C5KE7NO3QzIcZboSZBWb78mcKLB2XbuIWMPCXqayGhqh8hynQmhwQ4C5b+jpBXlLtm6+AFH7eJOSdl8iO39RU5TL6FrOjgmks/KvTO0yHaXxmBoRcVudZsv9sAGsUx/UtRA65FPViIgu/dEV8cNtz7HOtL4v9x1mkvsiHF7OJiB1KCzSdUSCI83JSjdh44jjlNx0x2SnPbbwmCR7hi53xszMLbAHqY27hK1O4ntR1Iaui8HhBx8inxwS5z271xEQ9HZ8W9veRaxXxGkzj3LKGzjYflK1UN/ZK2syy5+cF4AEUpqEuQYi2waGhMxxWRo5KA05RLXetvsJYFEHUlATq9aXjMv29yH77KzySgpZe/Emd+Hb7r/7TKDeWXRaWDtUa+lc7G5oHLn6Kmm0iM1lerFKalEO9eoZwO2m1+O47CJ5yTKw1mNsC5Dj6EhG1QeonJWPS5z32vjNvnzRm2psbInt00SE2ClPxY5ASQOdcCMkq4ELGUHVssOGlniVYILs+tiwzrDTaXcckf8lvVvx6CiXfmFY+JYK9q3HYEuE=
+  distributions: sdist bdist_wheel
+  on:
+    tags: true
+    all_branches: true
+    python: '3.7'
