@@ -46,14 +46,39 @@ Example usage:
         ['a_public_function']
 
 """
+from typing import Dict
 _GLOBAL_VAR_NAME = '_do_not_include_all'
 
 
-def start_all(globs):
+def start_all(globs: Dict):
+    """Start defining externally accessible objects.
+
+    Call ``start_all(globals())`` when you want to start defining objects
+    in your module that you want to be accessible from outside the module.
+
+    Args:
+        globs(dict): Pass the globals dictionary to the function using
+            ``globals()``.
+    """
     globs[_GLOBAL_VAR_NAME] = list(globs.keys()) + [_GLOBAL_VAR_NAME]
 
 
-def end_all(globs):
+def end_all(globs: Dict):
+    """Finish defining externally accessible objects.
+
+    Call ``end_all(globals())`` when you have finished defining objects
+    in your module that you want to be accessible from outside the module.
+    After this function has been run the ``__all__`` module variable will
+    be updated with the names of all objects that were created between the
+    ``start_all`` and ``end_all`` funciton calls.
+
+    Args:
+        globs(dict): Pass the globals dictionary to the function using
+            ``globals()``.
+    """
     globs['__all__'] = list(
         set(list(globs.keys())) - set(globs[_GLOBAL_VAR_NAME])
     )
+
+
+__all__ = ['start_all', 'end_all']
