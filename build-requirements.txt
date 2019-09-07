@@ -1,0 +1,5 @@
+m2r
+restructuredtext_lint
+pygments
+pytest
+pytest-cov
