@@ -6,7 +6,7 @@ python:
 - '3.6'
 - '3.7'
 install:
-- pip install -U setuptools pip
+- pip install -U setuptools pip pytest pytest-cov
 script:
 - pytest --doctest-modules --cov=auto_all auto_all.py
 deploy:
