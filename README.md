@@ -1,6 +1,6 @@
 # auto-all
 
-Automatically manage the `__all__` variable in Python packages.
+Automatically manage the `__all__` variable in Python modules.
 
 [![pypi package](https://badge.fury.io/py/auto-all.svg)](https://pypi.org/project/auto-all)
 [![build status](https://api.travis-ci.org/jongracecox/auto-all.svg?branch=master)](https://travis-ci.org/jongracecox/auto-all)
@@ -12,7 +12,16 @@ Automatically manage the `__all__` variable in Python packages.
 ## Overview
 
 `auto_all` can be used for controlling what is made available
-for import from a package.
+for import from a Python module.
+
+Advantages:
+
+* Easily populate the `__all__` variable in modules.
+* Easily exclude imported objects
+* Clearly differentiate between internal and external facing objects.
+* Use simple, intuitive code.
+* Never worry about forgetting to add new objects to `__all__`.
+* Help Python IDE's differentiate between internal and external facing objects.
 
 ## Installation
 
@@ -22,15 +31,15 @@ pip install auto-all
 
 ## Usage
 
-First, import the auto_all functions into your package.
+First, import the auto_all functions into your module.
 
 ```python
 from auto_all import start_all, end_all
 ```
 
-If your package has external dependencies then these can be imported
+If your module has external dependencies then these can be imported
 and the imported objects can be hidden.  In this example we will import
-pathlib.Path and show that it doesn't appear on the __all__ list.
+pathlib.Path and show that it doesn't appear on the `__all__` list.
 We're not actually going to use this import, it's just for illustration.
 
 ```python
@@ -39,7 +48,7 @@ from pathlib import Path
 
 Now we can define some internal functions that we want to keep private.
 We can also do this using underscore prefixes, but `auto_all` gives us a
-little more control.
+little more granular control.
 
 ```python
 def a_private_function():
@@ -69,7 +78,7 @@ end_all(globals())
 ```
 
 When we look at the `__all__` variable we can see only the public
-facing function is listed.
+facing objects are listed.
 
 ```
 >>> print(__all__)
