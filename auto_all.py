@@ -24,10 +24,9 @@ Example usage:
         ...     print("This is a private function.")
 
     Now we are ready to start defining public functions, so we use
-    ``start_all()``.  We need to pass it the globals dict so that it can
-    see what's already defined.
+    ``start_all()``.
 
-        >>> start_all(globals())
+        >>> start_all()
 
     Now we can define our public functions.
 
@@ -37,7 +36,7 @@ Example usage:
     Finally we use ``end_all()`` to finish defining public functions and
     create the ``__all__`` variable.
 
-        >>> end_all(globals())
+        >>> end_all()
 
     When we look at the ``__all__`` variable we can see only the public
     facing function is listed.
@@ -45,25 +44,55 @@ Example usage:
         >>> print(__all__)
         ['a_public_function']
 
+    It is possible to pass the globals dict to the ``start_all`` and
+    ``end_all`` function calls. This is not typically necessary, and is
+    only included for backward compatibility.
+
+        >>> del __all__  # Delete __all__ for demo purposes
+
+        >>> start_all(globals())
+
+        >>> def another_public_function():
+        ...     pass
+
+        >>> end_all(globals())
+
+        >>> def a_private_function():
+        ...     pass
+
+        >>> print(__all__)
+        ['another_public_function']
+
 """
-from typing import Dict
+import inspect
+from typing import Dict, Optional
 _GLOBAL_VAR_NAME = '_do_not_include_all'
 
 
-def start_all(globs: Dict):
+def _get_globals():
+    """Get global dict from stack."""
+    calling_module = inspect.stack()[2]
+    local_stack = calling_module[0]
+    return local_stack.f_globals
+
+
+def start_all(globs: Optional[Dict] = None):
     """Start defining externally accessible objects.
 
     Call ``start_all(globals())`` when you want to start defining objects
     in your module that you want to be accessible from outside the module.
 
     Args:
-        globs(dict): Pass the globals dictionary to the function using
-            ``globals()``.
+        globs(dict, optional): Pass the globals dictionary to the function
+            using ``globals()``.
     """
+    if not globs:
+        globs = _get_globals()
+
     globs[_GLOBAL_VAR_NAME] = list(globs.keys()) + [_GLOBAL_VAR_NAME]
 
 
-def end_all(globs: Dict):
+def end_all(globs: Optional[Dict] = None):
     """Finish defining externally accessible objects.
 
     Call ``end_all(globals())`` when you have finished defining objects
@@ -73,9 +102,12 @@ def end_all(globs: Dict):
     ``start_all`` and ``end_all`` funciton calls.
 
     Args:
-        globs(dict): Pass the globals dictionary to the function using
-            ``globals()``.
+        globs(dict, optional): Pass the globals dictionary to the function
+            using ``globals()``.
     """
+    if not globs:
+        globs = _get_globals()
+
     globs['__all__'] = list(
         set(list(globs.keys())) - set(globs[_GLOBAL_VAR_NAME])
     )
