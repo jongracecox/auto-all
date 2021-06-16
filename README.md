@@ -3,7 +3,7 @@
 Automatically manage the `__all__` variable in Python modules.
 
 [![pypi package](https://badge.fury.io/py/auto-all.svg)](https://pypi.org/project/auto-all)
-[![build status](https://api.travis-ci.org/jongracecox/auto-all.svg?branch=master)](https://travis-ci.org/jongracecox/auto-all)
+[![build status](https://api.travis-ci.com/jongracecox/auto-all.svg?branch=master)](https://travis-ci.com/jongracecox/auto-all)
 [![downloads](https://img.shields.io/pypi/dm/auto-all.svg)](https://pypistats.org/packages/auto-all)
 [![GitHub last commit](https://img.shields.io/github/last-commit/jongracecox/auto-all.svg)](https://github.com/jongracecox/auto-all/commits/master)
 [![GitHub](https://img.shields.io/github/license/jongracecox/auto-all.svg)](https://github.com/jongracecox/auto-all/blob/master/LICENSE)
