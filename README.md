@@ -9,6 +9,8 @@ Automatically manage the `__all__` variable in Python modules.
 [![GitHub](https://img.shields.io/github/license/jongracecox/auto-all.svg)](https://github.com/jongracecox/auto-all/blob/master/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/jongracecox/auto-all.svg?style=social)](https://github.com/jongracecox/auto-all/stargazers)
 
+[![buymeacoffee](https://camo.githubusercontent.com/c3f856bacd5b09669157ed4774f80fb9d8622dd45ce8fdf2990d3552db99bd27/68747470733a2f2f7777772e6275796d6561636f666665652e636f6d2f6173736574732f696d672f637573746f6d5f696d616765732f6f72616e67655f696d672e706e67)](https://www.buymeacoffee.com/jongracecox)
+
 ## Overview
 
 `auto_all` can be used for controlling what is made available
